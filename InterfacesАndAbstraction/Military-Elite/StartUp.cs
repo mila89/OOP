@@ -54,8 +54,8 @@ namespace Military_Elite
             string firstName = input[2];
             string lastName = input[3];
             decimal salary = decimal.Parse(input[4]);
-            string corp = input[5];
-            List<Mission> missions = new List<Mission>();
+            string corp= input[5];
+            List<IMission> missions = new List<IMission>();
             for (int i = 6; i < input.Length; i+=2)
             {
                 try
