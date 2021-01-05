@@ -7,8 +7,9 @@ namespace Stealer
         static void Main(string[] args)
         {
             Spy spy = new Spy();
-            string[] param = { "username", "password" };
-            string result = spy.StealFieldInfo("Stealer.Hacker", param);
+            //  string[] param = { "username", "password" };
+            //string result = spy.StealFieldInfo("Stealer.Hacker", param);
+            string result = spy.AnalyzeAcessModifiers("Stealer.Hacker");
             Console.WriteLine(result);
         }
     }
