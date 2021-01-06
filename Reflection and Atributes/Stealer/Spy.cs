@@ -29,7 +29,6 @@ namespace Stealer
         {
             StringBuilder sb = new StringBuilder();
             Type spyType = Type.GetType(className);
-            Object instance=Activator.CreateInstance(spyType, new object[]{ });
             FieldInfo[] spyFields = spyType.GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
             foreach (FieldInfo field in spyFields)
             {
@@ -46,6 +45,20 @@ namespace Stealer
                 sb.AppendLine($"{method.Name} have to be private!");
             }
             return sb.ToString();
+        }
+
+        public string RevealPrivateMethods(string className)
+        {
+            StringBuilder result = new StringBuilder();
+            Type spyClass = Type.GetType(className);
+            MethodInfo[] privateMethods = spyClass.GetMethods(BindingFlags.Instance | BindingFlags.NonPublic);
+            result.AppendLine($"All Private Methods of Class: {className}");
+            result.AppendLine($"Base Class: {GetType().BaseType.Name}");
+            foreach (MethodInfo method in privateMethods)
+            {
+                result.AppendLine(method.Name);
+            }
+            return result.ToString();
         }
     }
 }
